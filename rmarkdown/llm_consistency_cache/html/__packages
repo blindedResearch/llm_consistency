@@ -1,0 +1,12 @@
+irrCAC
+stringr
+tidyverse
+ggplot2
+tibble
+tidyr
+readr
+purrr
+dplyr
+forcats
+lubridate
+gridExtra
