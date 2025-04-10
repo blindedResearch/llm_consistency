@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Preface {-}
 
-In this project, we utilize the open-source `r fontawesome::fa(name = "r-project", fill = "steelblue")` programming language, alongside Python, to evaluate the consistency of large language models (LLMs) through intra- and inter-reliability methods. For `r fontawesome::fa(name = "r-project", fill = "steelblue")`, we are using *version 4.4.2 (2024-10-31 ucrt)*, and we manage package dependencies with `renv`. The `renv` package allows for isolated project environments, ensuring the same versions of `r fontawesome::fa(name = "r-project", fill = "steelblue")` packages are used consistently. If you're new to `renv`, it enables the creation of "snapshots" for package versions, ensuring reproducibility across different systems. You can find all package versions used in this project in our `renv` repository at [this link](https://github.com/blindedResearch/llm_constitency/tree/main/renv).
+In this project, we utilize the open-source `r fontawesome::fa(name = "r-project", fill = "steelblue")` programming language, alongside Python, to evaluate the consistency of large language models (LLMs) through intra- and inter-reliability methods. For `r fontawesome::fa(name = "r-project", fill = "steelblue")`, we are using *version 4.4.2 (2024-10-31 ucrt)*, and we manage package dependencies with `renv`. The `renv` package allows for isolated project environments, ensuring the same versions of `r fontawesome::fa(name = "r-project", fill = "steelblue")` packages are used consistently. If you're new to `renv`, it enables the creation of "snapshots" for package versions, ensuring reproducibility across different systems. You can find all package versions used in this project in our `renv` repository at [this link](https://github.com/blindedResearch/llm_consistency/tree/main/renv).
 
 This document is structured using RMarkdown, which seamlessly integrates both `r fontawesome::fa(name = "r-project", fill = "steelblue")` and Python code chunks. Readers can tell the difference between `r fontawesome::fa(name = "r-project", fill = "steelblue")` and Python code chunks by downloading the raw RMarkdown file from [this repository](https://github.com/blindedResearch/llm_consistency/tree/main/rmarkdown). In addition, the document features a **floating table of contents (TOC)** on the side, which makes navigation through the sections more convenient. The TOC follows the reader as they scroll, allowing quick access to different sections.
 
@@ -38,7 +38,6 @@ All input and output files for this project can be accessed and downloaded from 
 - We describe the experimental setup for the consistency analysis of multiple LLMs.  
 - We provide a custom function for LLM classification experiments.  
 - We present an example of a binary classification experiment, using the LLMs to label the sentiment of news articles related to the stock market, and utilize the intra- and inter-rater reliability methods to evaluate the consistency of the LLMs.
-
 
 
 # Sample Size Calculations for our Binary Classification Experiment {#sample_size}
@@ -746,7 +745,7 @@ all_but_last = paste(column_names[-length(column_names)], collapse = ", ")
 final_string = stringr::str_c(all_but_last, ", and ", column_names[length(column_names)])
 ```
 
-The CSV file containing the stock news data can be accessed [here](https://github.com/blindedResearch/llm_consistency/blob/master/data/stock_news_data.csv). The `stock_news_df` data frame contains `r scales::comma(nrow(stock_news_df))` rows and `r ncol(stock_news_df)` columns. The names of the columns are: `r final_string`. Furthermore, the sentiment of the articles is stored in the `sentiment` column. The sentiment of those articles is divided into two categories: `positive`, and `negative`. Their distribution is as follows:
+The CSV file containing the stock news data can be accessed [here](https://github.com/blindedResearch/llm_consistency/blob/main/data/stock_news_data.csv). The `stock_news_df` data frame contains `r scales::comma(nrow(stock_news_df))` rows and `r ncol(stock_news_df)` columns. The names of the columns are: `r final_string`. Furthermore, the sentiment of the articles is stored in the `sentiment` column. The sentiment of those articles is divided into two categories: `positive`, and `negative`. Their distribution is as follows:
 
 ```{r sentiment_table, echo=FALSE, results='asis'}
 pander::pander(table(stock_news_df$sentiment), compact = TRUE)
@@ -772,7 +771,8 @@ readr::write_rds(binary_data, "../data/binary_classification_data.rds")
 readr::write_csv(binary_data, "../data/binary_classification_data.csv")
 ```
 
-The resulting [binary classification dataset](https://github.com/blindedResearch/llm_consistency/blob/master/data/binary_classification_data.csv) 
+The resulting [binary classification dataset](https://github.com/blindedResearch/llm_consistency/blob/main/data/binary_classification_data.csv) 
+
 
 contains `r scales::comma(nrow(binary_data))` samples. The distribution of the sentiment classes is as follows: 
 
@@ -868,7 +868,7 @@ res = generalized_chat_completion(
 ```
 
 
-The labeling process has been completed for the binary classification data set. The results have been saved to a CSV file, which can be accessed [here](https://figshare.com/s/da5270e625ee605ffd44).
+The labeling process has been completed for the binary classification data set. The results have been saved to a CSV file, **binary_classification_results.csv**, which can be accessed [here](https://figshare.com/s/da5270e625ee605ffd44).
 
 
 ### Task Completion Time by Model
@@ -1607,7 +1607,7 @@ readr::write_csv(df, "../results/binary_reliability_metrics.csv")
 ```
 
 
-The CSV files containing the reliability metrics for the binary classification experiment can be accessed at [binary_reliability_metrics_means.csv](https://github.com/blindedResearch/llm_consistency/blob/main/binary_reliability_metrics_means.csv), [binary_pa_summary.csv](https://github.com/blindedResearch/llm_consistency/blob/main/results/binary_pa_summary.csv), and [binary_reliability_metrics.csv](https://github.com/blindedResearch/llm_consistency/blob/main/results/binary_reliability_metrics.csv). 
+The CSV files containing the reliability metrics for the binary classification experiment can be accessed at [binary_reliability_metrics_means.csv](https://github.com/blindedResearch/llm_consistency/blob/main/results/binary_reliability_metrics_means.csv), [binary_pa_summary.csv](https://github.com/blindedResearch/llm_consistency/blob/main/results/binary_pa_summary.csv), and [binary_reliability_metrics.csv](https://github.com/blindedResearch/llm_consistency/blob/main/results/binary_reliability_metrics.csv). 
 
 
 ### Intra-LLM Reliability
